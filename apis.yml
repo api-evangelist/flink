@@ -1,13 +1,25 @@
+aid: flink
 name: Apache Flink
 description: A framework and distributed processing engine for stateful computations
   over unbounded and bounded data streams.
-url: https://flink.apache.org/
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/flink/refs/heads/main/apis.yml
+created: '2025-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 tags:
-- Stream Processing
-- Big Data
-- Distributed Computing
-- Real-Time Analytics
-created: '2025'
-modified: '2025'
+  - Stream Processing
+  - Big Data
+  - Distributed Computing
+  - Real-Time Analytics
 apis: []
-common: []
+common:
+  - type: Website
+    url: https://flink.apache.org/
+  - type: Documentation
+    url: https://nightlies.apache.org/flink/flink-docs-stable/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
