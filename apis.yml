@@ -1,7 +1,6 @@
 aid: flink
 name: Apache Flink
-description: A framework and distributed processing engine for stateful computations
-  over unbounded and bounded data streams.
+description: A framework and distributed processing engine for stateful computations over unbounded and bounded data streams.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: >-
@@ -10,10 +9,10 @@ created: '2025-01-01'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
-  - Stream Processing
   - Big Data
   - Distributed Computing
   - Real-Time Analytics
+  - Stream Processing
 apis: []
 common:
   - type: Website
