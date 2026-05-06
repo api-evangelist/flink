@@ -1,0 +1,1042 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Flink REST API
+  description: The Flink REST API is exposed by the JobManager Dispatcher and provides monitoring and management capabilities
+    for a Flink cluster. It covers cluster configuration, JobManager environment and metrics, job lifecycle (submit, list,
+    cancel, stop), checkpoint and savepoint management, JAR upload and execution, dataset operations, and TaskManager inspection.
+  tags:
+  - Flink
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: flink
+    baseUri: http://localhost:8081
+    description: Apache Flink REST API HTTP API.
+    resources:
+    - name: cluster
+      path: /cluster
+      operations:
+      - name: shutdowncluster
+        method: DELETE
+        description: Shut down the cluster
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: config
+      path: /config
+      operations:
+      - name: getwebuiconfig
+        method: GET
+        description: Web UI configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobmanager-config
+      path: /jobmanager/config
+      operations:
+      - name: getjobmanagerconfig
+        method: GET
+        description: Cluster configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobmanager-environment
+      path: /jobmanager/environment
+      operations:
+      - name: getjobmanagerenvironment
+        method: GET
+        description: JobManager environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobmanager-logs
+      path: /jobmanager/logs
+      operations:
+      - name: listjobmanagerlogs
+        method: GET
+        description: List JobManager log files
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobmanager-metrics
+      path: /jobmanager/metrics
+      operations:
+      - name: getjobmanagermetrics
+        method: GET
+        description: JobManager metrics
+        inputParameters:
+        - name: get
+          in: query
+          type: string
+          description: Comma-separated metric names.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobmanager-thread-dump
+      path: /jobmanager/thread-dump
+      operations:
+      - name: getjobmanagerthreaddump
+        method: GET
+        description: JobManager thread dump
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs
+      path: /jobs
+      operations:
+      - name: listjobs
+        method: GET
+        description: List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-overview
+      path: /jobs/overview
+      operations:
+      - name: getjobsoverview
+        method: GET
+        description: Jobs overview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-metrics
+      path: /jobs/metrics
+      operations:
+      - name: getjobsmetrics
+        method: GET
+        description: Aggregated job metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid
+      path: /jobs/{jobid}
+      operations:
+      - name: getjob
+        method: GET
+        description: Get job details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: terminatejob
+        method: PATCH
+        description: Cancel or stop a job
+        inputParameters:
+        - name: mode
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-config
+      path: /jobs/{jobid}/config
+      operations:
+      - name: getjobconfig
+        method: GET
+        description: Job configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-exceptions
+      path: /jobs/{jobid}/exceptions
+      operations:
+      - name: getjobexceptions
+        method: GET
+        description: Job exception history
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-accumulators
+      path: /jobs/{jobid}/accumulators
+      operations:
+      - name: getjobaccumulators
+        method: GET
+        description: Job accumulators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-checkpoints
+      path: /jobs/{jobid}/checkpoints
+      operations:
+      - name: getjobcheckpoints
+        method: GET
+        description: Checkpoint statistics for a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: triggercheckpoint
+        method: POST
+        description: Trigger a checkpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-checkpoints-config
+      path: /jobs/{jobid}/checkpoints/config
+      operations:
+      - name: getcheckpointconfig
+        method: GET
+        description: Checkpoint configuration for a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-checkpoints-details-checkpointid
+      path: /jobs/{jobid}/checkpoints/details/{checkpointid}
+      operations:
+      - name: getcheckpointdetails
+        method: GET
+        description: Checkpoint details
+        inputParameters:
+        - name: checkpointid
+          in: path
+          type: integer
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars
+      path: /jars
+      operations:
+      - name: listjars
+        method: GET
+        description: List uploaded JARs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars-upload
+      path: /jars/upload
+      operations:
+      - name: uploadjar
+        method: POST
+        description: Upload a JAR
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars-jarid
+      path: /jars/{jarid}
+      operations:
+      - name: deletejar
+        method: DELETE
+        description: Delete a JAR
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars-jarid-plan
+      path: /jars/{jarid}/plan
+      operations:
+      - name: getjarplan
+        method: GET
+        description: Plan for a JAR
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars-jarid-run
+      path: /jars/{jarid}/run
+      operations:
+      - name: runjar
+        method: POST
+        description: Run a job from a JAR
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: taskmanagers
+      path: /taskmanagers
+      operations:
+      - name: listtaskmanagers
+        method: GET
+        description: List TaskManagers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: taskmanagers-taskmanagerid-metrics
+      path: /taskmanagers/{taskmanagerid}/metrics
+      operations:
+      - name: gettaskmanagermetrics
+        method: GET
+        description: TaskManager metrics
+        inputParameters:
+        - name: taskmanagerid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: taskmanagers-taskmanagerid-logs
+      path: /taskmanagers/{taskmanagerid}/logs
+      operations:
+      - name: listtaskmanagerlogs
+        method: GET
+        description: List TaskManager logs
+        inputParameters:
+        - name: taskmanagerid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets
+      path: /datasets
+      operations:
+      - name: listdatasets
+        method: GET
+        description: List cluster datasets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-datasetid
+      path: /datasets/{datasetid}
+      operations:
+      - name: deletedataset
+        method: DELETE
+        description: Delete a cluster dataset
+        inputParameters:
+        - name: datasetid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: flink-rest
+    description: REST adapter for Apache Flink REST API.
+    resources:
+    - path: /cluster
+      name: shutdowncluster
+      operations:
+      - method: DELETE
+        name: shutdowncluster
+        description: Shut down the cluster
+        call: flink.shutdowncluster
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /config
+      name: getwebuiconfig
+      operations:
+      - method: GET
+        name: getwebuiconfig
+        description: Web UI configuration
+        call: flink.getwebuiconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobmanager/config
+      name: getjobmanagerconfig
+      operations:
+      - method: GET
+        name: getjobmanagerconfig
+        description: Cluster configuration
+        call: flink.getjobmanagerconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobmanager/environment
+      name: getjobmanagerenvironment
+      operations:
+      - method: GET
+        name: getjobmanagerenvironment
+        description: JobManager environment
+        call: flink.getjobmanagerenvironment
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobmanager/logs
+      name: listjobmanagerlogs
+      operations:
+      - method: GET
+        name: listjobmanagerlogs
+        description: List JobManager log files
+        call: flink.listjobmanagerlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobmanager/metrics
+      name: getjobmanagermetrics
+      operations:
+      - method: GET
+        name: getjobmanagermetrics
+        description: JobManager metrics
+        call: flink.getjobmanagermetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobmanager/thread-dump
+      name: getjobmanagerthreaddump
+      operations:
+      - method: GET
+        name: getjobmanagerthreaddump
+        description: JobManager thread dump
+        call: flink.getjobmanagerthreaddump
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs
+      name: listjobs
+      operations:
+      - method: GET
+        name: listjobs
+        description: List jobs
+        call: flink.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/overview
+      name: getjobsoverview
+      operations:
+      - method: GET
+        name: getjobsoverview
+        description: Jobs overview
+        call: flink.getjobsoverview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/metrics
+      name: getjobsmetrics
+      operations:
+      - method: GET
+        name: getjobsmetrics
+        description: Aggregated job metrics
+        call: flink.getjobsmetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}
+      name: getjob
+      operations:
+      - method: GET
+        name: getjob
+        description: Get job details
+        call: flink.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}
+      name: terminatejob
+      operations:
+      - method: PATCH
+        name: terminatejob
+        description: Cancel or stop a job
+        call: flink.terminatejob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/config
+      name: getjobconfig
+      operations:
+      - method: GET
+        name: getjobconfig
+        description: Job configuration
+        call: flink.getjobconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/exceptions
+      name: getjobexceptions
+      operations:
+      - method: GET
+        name: getjobexceptions
+        description: Job exception history
+        call: flink.getjobexceptions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/accumulators
+      name: getjobaccumulators
+      operations:
+      - method: GET
+        name: getjobaccumulators
+        description: Job accumulators
+        call: flink.getjobaccumulators
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/checkpoints
+      name: getjobcheckpoints
+      operations:
+      - method: GET
+        name: getjobcheckpoints
+        description: Checkpoint statistics for a job
+        call: flink.getjobcheckpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/checkpoints
+      name: triggercheckpoint
+      operations:
+      - method: POST
+        name: triggercheckpoint
+        description: Trigger a checkpoint
+        call: flink.triggercheckpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/checkpoints/config
+      name: getcheckpointconfig
+      operations:
+      - method: GET
+        name: getcheckpointconfig
+        description: Checkpoint configuration for a job
+        call: flink.getcheckpointconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jobs/{jobid}/checkpoints/details/{checkpointid}
+      name: getcheckpointdetails
+      operations:
+      - method: GET
+        name: getcheckpointdetails
+        description: Checkpoint details
+        call: flink.getcheckpointdetails
+        with:
+          checkpointid: rest.checkpointid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jars
+      name: listjars
+      operations:
+      - method: GET
+        name: listjars
+        description: List uploaded JARs
+        call: flink.listjars
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jars/upload
+      name: uploadjar
+      operations:
+      - method: POST
+        name: uploadjar
+        description: Upload a JAR
+        call: flink.uploadjar
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jars/{jarid}
+      name: deletejar
+      operations:
+      - method: DELETE
+        name: deletejar
+        description: Delete a JAR
+        call: flink.deletejar
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jars/{jarid}/plan
+      name: getjarplan
+      operations:
+      - method: GET
+        name: getjarplan
+        description: Plan for a JAR
+        call: flink.getjarplan
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /jars/{jarid}/run
+      name: runjar
+      operations:
+      - method: POST
+        name: runjar
+        description: Run a job from a JAR
+        call: flink.runjar
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /taskmanagers
+      name: listtaskmanagers
+      operations:
+      - method: GET
+        name: listtaskmanagers
+        description: List TaskManagers
+        call: flink.listtaskmanagers
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /taskmanagers/{taskmanagerid}/metrics
+      name: gettaskmanagermetrics
+      operations:
+      - method: GET
+        name: gettaskmanagermetrics
+        description: TaskManager metrics
+        call: flink.gettaskmanagermetrics
+        with:
+          taskmanagerid: rest.taskmanagerid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /taskmanagers/{taskmanagerid}/logs
+      name: listtaskmanagerlogs
+      operations:
+      - method: GET
+        name: listtaskmanagerlogs
+        description: List TaskManager logs
+        call: flink.listtaskmanagerlogs
+        with:
+          taskmanagerid: rest.taskmanagerid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /datasets
+      name: listdatasets
+      operations:
+      - method: GET
+        name: listdatasets
+        description: List cluster datasets
+        call: flink.listdatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /datasets/{datasetid}
+      name: deletedataset
+      operations:
+      - method: DELETE
+        name: deletedataset
+        description: Delete a cluster dataset
+        call: flink.deletedataset
+        with:
+          datasetid: rest.datasetid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: flink-mcp
+    transport: http
+    description: MCP adapter for Apache Flink REST API for AI agent use.
+    tools:
+    - name: shutdowncluster
+      description: Shut down the cluster
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: flink.shutdowncluster
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getwebuiconfig
+      description: Web UI configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getwebuiconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobmanagerconfig
+      description: Cluster configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobmanagerconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobmanagerenvironment
+      description: JobManager environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobmanagerenvironment
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listjobmanagerlogs
+      description: List JobManager log files
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listjobmanagerlogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobmanagermetrics
+      description: JobManager metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobmanagermetrics
+      with:
+        get: tools.get
+      inputParameters:
+      - name: get
+        type: string
+        description: Comma-separated metric names.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobmanagerthreaddump
+      description: JobManager thread dump
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobmanagerthreaddump
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listjobs
+      description: List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobsoverview
+      description: Jobs overview
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobsoverview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobsmetrics
+      description: Aggregated job metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobsmetrics
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjob
+      description: Get job details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: terminatejob
+      description: Cancel or stop a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flink.terminatejob
+      with:
+        mode: tools.mode
+      inputParameters:
+      - name: mode
+        type: string
+        description: mode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobconfig
+      description: Job configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobexceptions
+      description: Job exception history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobexceptions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobaccumulators
+      description: Job accumulators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobaccumulators
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjobcheckpoints
+      description: Checkpoint statistics for a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjobcheckpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: triggercheckpoint
+      description: Trigger a checkpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flink.triggercheckpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcheckpointconfig
+      description: Checkpoint configuration for a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getcheckpointconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getcheckpointdetails
+      description: Checkpoint details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getcheckpointdetails
+      with:
+        checkpointid: tools.checkpointid
+      inputParameters:
+      - name: checkpointid
+        type: integer
+        description: checkpointid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listjars
+      description: List uploaded JARs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listjars
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: uploadjar
+      description: Upload a JAR
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flink.uploadjar
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletejar
+      description: Delete a JAR
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: flink.deletejar
+      with:
+        jarid: tools.jarid
+      inputParameters:
+      - name: jarid
+        type: string
+        description: jarid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getjarplan
+      description: Plan for a JAR
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.getjarplan
+      with:
+        jarid: tools.jarid
+      inputParameters:
+      - name: jarid
+        type: string
+        description: jarid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: runjar
+      description: Run a job from a JAR
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: flink.runjar
+      with:
+        jarid: tools.jarid
+      inputParameters:
+      - name: jarid
+        type: string
+        description: jarid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtaskmanagers
+      description: List TaskManagers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listtaskmanagers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: gettaskmanagermetrics
+      description: TaskManager metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.gettaskmanagermetrics
+      with:
+        taskmanagerid: tools.taskmanagerid
+      inputParameters:
+      - name: taskmanagerid
+        type: string
+        description: taskmanagerid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtaskmanagerlogs
+      description: List TaskManager logs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listtaskmanagerlogs
+      with:
+        taskmanagerid: tools.taskmanagerid
+      inputParameters:
+      - name: taskmanagerid
+        type: string
+        description: taskmanagerid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdatasets
+      description: List cluster datasets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: flink.listdatasets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletedataset
+      description: Delete a cluster dataset
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: flink.deletedataset
+      with:
+        datasetid: tools.datasetid
+      inputParameters:
+      - name: datasetid
+        type: string
+        description: datasetid
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
