@@ -63,6 +63,10 @@ common:
     url: https://flink.apache.org/posts/
   - type: Community
     url: https://flink.apache.org/community/
+  - type: Integrations
+    url: https://flink.apache.org/ecosystem/
+integrations:
+  - name: 2020/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
