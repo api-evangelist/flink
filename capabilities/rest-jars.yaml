@@ -1,0 +1,232 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Flink REST API — JARs
+  description: 'Apache Flink REST API — JARs. 5 operations. Lead operation: List uploaded JARs. Self-contained Naftiko capability
+    covering one Flink business surface.'
+  tags:
+  - Flink
+  - JARs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLINK_API_KEY: FLINK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-jars
+    baseUri: http://localhost:8081
+    description: Apache Flink REST API — JARs business capability. Self-contained, no shared references.
+    resources:
+    - name: jars
+      path: /jars
+      operations:
+      - name: listjars
+        method: GET
+        description: List uploaded JARs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jars-upload
+      path: /jars/upload
+      operations:
+      - name: uploadjar
+        method: POST
+        description: Upload a JAR
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: jars-jarid
+      path: /jars/{jarid}
+      operations:
+      - name: deletejar
+        method: DELETE
+        description: Delete a JAR
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+    - name: jars-jarid-plan
+      path: /jars/{jarid}/plan
+      operations:
+      - name: getjarplan
+        method: GET
+        description: Plan for a JAR
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+    - name: jars-jarid-run
+      path: /jars/{jarid}/run
+      operations:
+      - name: runjar
+        method: POST
+        description: Run a job from a JAR
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: jarid
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-jars-rest
+    port: 8080
+    description: REST adapter for Apache Flink REST API — JARs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/jars
+      name: jars
+      description: REST surface for jars.
+      operations:
+      - method: GET
+        name: listjars
+        description: List uploaded JARs
+        call: rest-jars.listjars
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jars/upload
+      name: jars-upload
+      description: REST surface for jars-upload.
+      operations:
+      - method: POST
+        name: uploadjar
+        description: Upload a JAR
+        call: rest-jars.uploadjar
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jars/{jarid}
+      name: jars-jarid
+      description: REST surface for jars-jarid.
+      operations:
+      - method: DELETE
+        name: deletejar
+        description: Delete a JAR
+        call: rest-jars.deletejar
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jars/{jarid}/plan
+      name: jars-jarid-plan
+      description: REST surface for jars-jarid-plan.
+      operations:
+      - method: GET
+        name: getjarplan
+        description: Plan for a JAR
+        call: rest-jars.getjarplan
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jars/{jarid}/run
+      name: jars-jarid-run
+      description: REST surface for jars-jarid-run.
+      operations:
+      - method: POST
+        name: runjar
+        description: Run a job from a JAR
+        call: rest-jars.runjar
+        with:
+          jarid: rest.jarid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-jars-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Flink REST API — JARs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-uploaded-jars
+      description: List uploaded JARs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jars.listjars
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-jar
+      description: Upload a JAR
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jars.uploadjar
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-jar
+      description: Delete a JAR
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-jars.deletejar
+      with:
+        jarid: tools.jarid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: plan-jar
+      description: Plan for a JAR
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jars.getjarplan
+      with:
+        jarid: tools.jarid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: run-job-jar
+      description: Run a job from a JAR
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jars.runjar
+      with:
+        jarid: tools.jarid
+      outputParameters:
+      - type: object
+        mapping: $.

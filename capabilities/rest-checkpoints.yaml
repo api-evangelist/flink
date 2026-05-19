@@ -1,0 +1,165 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Flink REST API — Checkpoints
+  description: 'Apache Flink REST API — Checkpoints. 4 operations. Lead operation: Checkpoint statistics for a job. Self-contained
+    Naftiko capability covering one Flink business surface.'
+  tags:
+  - Flink
+  - Checkpoints
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLINK_API_KEY: FLINK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-checkpoints
+    baseUri: http://localhost:8081
+    description: Apache Flink REST API — Checkpoints business capability. Self-contained, no shared references.
+    resources:
+    - name: jobs-jobid-checkpoints
+      path: /jobs/{jobid}/checkpoints
+      operations:
+      - name: getjobcheckpoints
+        method: GET
+        description: Checkpoint statistics for a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: triggercheckpoint
+        method: POST
+        description: Trigger a checkpoint
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-checkpoints-config
+      path: /jobs/{jobid}/checkpoints/config
+      operations:
+      - name: getcheckpointconfig
+        method: GET
+        description: Checkpoint configuration for a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-checkpoints-details-checkpointid
+      path: /jobs/{jobid}/checkpoints/details/{checkpointid}
+      operations:
+      - name: getcheckpointdetails
+        method: GET
+        description: Checkpoint details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: checkpointid
+          in: path
+          type: integer
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-checkpoints-rest
+    port: 8080
+    description: REST adapter for Apache Flink REST API — Checkpoints. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/jobs/{jobid}/checkpoints
+      name: jobs-jobid-checkpoints
+      description: REST surface for jobs-jobid-checkpoints.
+      operations:
+      - method: GET
+        name: getjobcheckpoints
+        description: Checkpoint statistics for a job
+        call: rest-checkpoints.getjobcheckpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: triggercheckpoint
+        description: Trigger a checkpoint
+        call: rest-checkpoints.triggercheckpoint
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}/checkpoints/config
+      name: jobs-jobid-checkpoints-config
+      description: REST surface for jobs-jobid-checkpoints-config.
+      operations:
+      - method: GET
+        name: getcheckpointconfig
+        description: Checkpoint configuration for a job
+        call: rest-checkpoints.getcheckpointconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}/checkpoints/details/{checkpointid}
+      name: jobs-jobid-checkpoints-details-checkpointid
+      description: REST surface for jobs-jobid-checkpoints-details-checkpointid.
+      operations:
+      - method: GET
+        name: getcheckpointdetails
+        description: Checkpoint details
+        call: rest-checkpoints.getcheckpointdetails
+        with:
+          checkpointid: rest.checkpointid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-checkpoints-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Flink REST API — Checkpoints. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: checkpoint-statistics-job
+      description: Checkpoint statistics for a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-checkpoints.getjobcheckpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: trigger-checkpoint
+      description: Trigger a checkpoint
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-checkpoints.triggercheckpoint
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: checkpoint-configuration-job
+      description: Checkpoint configuration for a job
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-checkpoints.getcheckpointconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: checkpoint-details
+      description: Checkpoint details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-checkpoints.getcheckpointdetails
+      with:
+        checkpointid: tools.checkpointid
+      outputParameters:
+      - type: object
+        mapping: $.

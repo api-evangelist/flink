@@ -1,0 +1,292 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Flink REST API — Jobs
+  description: 'Apache Flink REST API — Jobs. 8 operations. Lead operation: List jobs. Self-contained Naftiko capability covering
+    one Flink business surface.'
+  tags:
+  - Flink
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    FLINK_API_KEY: FLINK_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-jobs
+    baseUri: http://localhost:8081
+    description: Apache Flink REST API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: jobs
+      path: /jobs
+      operations:
+      - name: listjobs
+        method: GET
+        description: List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-metrics
+      path: /jobs/metrics
+      operations:
+      - name: getjobsmetrics
+        method: GET
+        description: Aggregated job metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-overview
+      path: /jobs/overview
+      operations:
+      - name: getjobsoverview
+        method: GET
+        description: Jobs overview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid
+      path: /jobs/{jobid}
+      operations:
+      - name: getjob
+        method: GET
+        description: Get job details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: terminatejob
+        method: PATCH
+        description: Cancel or stop a job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mode
+          in: query
+          type: string
+    - name: jobs-jobid-accumulators
+      path: /jobs/{jobid}/accumulators
+      operations:
+      - name: getjobaccumulators
+        method: GET
+        description: Job accumulators
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-config
+      path: /jobs/{jobid}/config
+      operations:
+      - name: getjobconfig
+        method: GET
+        description: Job configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: jobs-jobid-exceptions
+      path: /jobs/{jobid}/exceptions
+      operations:
+      - name: getjobexceptions
+        method: GET
+        description: Job exception history
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: rest-jobs-rest
+    port: 8080
+    description: REST adapter for Apache Flink REST API — Jobs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/jobs
+      name: jobs
+      description: REST surface for jobs.
+      operations:
+      - method: GET
+        name: listjobs
+        description: List jobs
+        call: rest-jobs.listjobs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/metrics
+      name: jobs-metrics
+      description: REST surface for jobs-metrics.
+      operations:
+      - method: GET
+        name: getjobsmetrics
+        description: Aggregated job metrics
+        call: rest-jobs.getjobsmetrics
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/overview
+      name: jobs-overview
+      description: REST surface for jobs-overview.
+      operations:
+      - method: GET
+        name: getjobsoverview
+        description: Jobs overview
+        call: rest-jobs.getjobsoverview
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}
+      name: jobs-jobid
+      description: REST surface for jobs-jobid.
+      operations:
+      - method: GET
+        name: getjob
+        description: Get job details
+        call: rest-jobs.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: terminatejob
+        description: Cancel or stop a job
+        call: rest-jobs.terminatejob
+        with:
+          mode: rest.mode
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}/accumulators
+      name: jobs-jobid-accumulators
+      description: REST surface for jobs-jobid-accumulators.
+      operations:
+      - method: GET
+        name: getjobaccumulators
+        description: Job accumulators
+        call: rest-jobs.getjobaccumulators
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}/config
+      name: jobs-jobid-config
+      description: REST surface for jobs-jobid-config.
+      operations:
+      - method: GET
+        name: getjobconfig
+        description: Job configuration
+        call: rest-jobs.getjobconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/jobs/{jobid}/exceptions
+      name: jobs-jobid-exceptions
+      description: REST surface for jobs-jobid-exceptions.
+      operations:
+      - method: GET
+        name: getjobexceptions
+        description: Job exception history
+        call: rest-jobs.getjobexceptions
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Flink REST API — Jobs. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-jobs
+      description: List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.listjobs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: aggregated-job-metrics
+      description: Aggregated job metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjobsmetrics
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: jobs-overview
+      description: Jobs overview
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjobsoverview
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-job-details
+      description: Get job details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-stop-job
+      description: Cancel or stop a job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-jobs.terminatejob
+      with:
+        mode: tools.mode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: job-accumulators
+      description: Job accumulators
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjobaccumulators
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: job-configuration
+      description: Job configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjobconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: job-exception-history
+      description: Job exception history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjobexceptions
+      outputParameters:
+      - type: object
+        mapping: $.
