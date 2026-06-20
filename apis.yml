@@ -6,7 +6,7 @@ description: Apache Flink is an open-source framework and distributed processing
   status, submit and manage jobs, trigger savepoints and checkpoints, upload and run JARs, and inspect metrics, accumulators,
   and exception histories. The same REST endpoints power the Flink Web UI.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/flink/refs/heads/main/apis.yml
 created: '2025-01-01'
 modified: '2026-05-19'
