@@ -56,6 +56,10 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/rest-taskmanagers.yaml
 common:
+- type: VulnerabilityDisclosure
+  url: security/flink-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/flink-domain-security.yml
 - type: Website
   url: https://flink.apache.org/
 - type: Documentation
