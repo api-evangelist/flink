@@ -1,0 +1,7 @@
+---
+title: "Stateful Functions $StateFunStableShortVersion (stable)"
+url: "https://flink.apache.org/documentation/flink-stateful-functions-stable/"
+date: "2001-01-01"
+feed_url: "https://flink.apache.org/index.xml"
+---
+Flink documentation (latest stable release) # You can find the Flink documentation for the latest stable release here.
