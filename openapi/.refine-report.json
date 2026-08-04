@@ -1,0 +1,26 @@
+{
+  "provider": "flink",
+  "sources": [
+    "flink-checkpoints-api-openapi.yml",
+    "flink-cluster-api-openapi.yml",
+    "flink-datasets-api-openapi.yml",
+    "flink-jars-api-openapi.yml",
+    "flink-jobmanager-api-openapi.yml",
+    "flink-jobs-api-openapi.yml",
+    "flink-taskmanagers-api-openapi.yml"
+  ],
+  "outputs": [
+    "flink-checkpoints-api-openapi.yml",
+    "flink-cluster-api-openapi.yml",
+    "flink-datasets-api-openapi.yml",
+    "flink-jars-api-openapi.yml",
+    "flink-jobmanager-api-openapi.yml",
+    "flink-jobs-api-openapi.yml",
+    "flink-taskmanagers-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
