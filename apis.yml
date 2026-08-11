@@ -46,20 +46,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-cluster-api
   name: Apache Flink Cluster API
   description: Cluster lifecycle and configuration.
@@ -76,20 +62,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-datasets-api
   name: Apache Flink Datasets API
   description: Cluster dataset listing and deletion.
@@ -106,20 +78,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-jars-api
   name: Apache Flink JARs API
   description: JAR upload, listing, run, and delete.
@@ -136,20 +94,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-jobmanager-api
   name: Apache Flink JobManager API
   description: JobManager configuration, environment, logs, metrics, and threads.
@@ -166,20 +110,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-jobs-api
   name: Apache Flink Jobs API
   description: Job lifecycle and inspection.
@@ -196,20 +126,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 - aid: flink:flink-taskmanagers-api
   name: Apache Flink TaskManagers API
   description: TaskManager listing and inspection.
@@ -226,21 +142,14 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-  - type: X-NaftikoCapability
-    url: capabilities/rest-checkpoints.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-cluster.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-datasets.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jars.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobmanager.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-jobs.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-taskmanagers.yaml
 common:
+- type: CodeOfConduct
+  url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/apache/flink/blob/master/.github/CONTRIBUTING.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/apache/flink/blob/master/LICENSE
 - type: AgenticAccess
   url: agentic-access/flink-agentic-access.yml
 - type: VulnerabilityDisclosure
