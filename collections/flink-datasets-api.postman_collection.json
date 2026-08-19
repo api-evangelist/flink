@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "f898d444-ce66-4c16-979d-5dc31a6e07a5",
+      "name": "Datasets",
+      "description": {
+        "content": "Cluster dataset listing and deletion.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bedda1b8-cc90-487e-932c-346058e45364",
+          "name": "List cluster datasets",
+          "request": {
+            "name": "List cluster datasets",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70732580-82fc-42f0-bbc4-f8dd056328ba",
+              "name": "Available cluster datasets.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41b5e944-2f5a-4901-97f5-5c39fbf97294",
+          "name": "Delete a cluster dataset",
+          "request": {
+            "name": "Delete a cluster dataset",
+            "description": {},
+            "url": {
+              "path": [
+                "datasets",
+                ":datasetid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "datasetid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5428aa6-6765-4f79-8584-e3c5309573e1",
+              "name": "Dataset deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "datasets",
+                    ":datasetid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "datasetid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8081",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d5152ed8-f309-4774-8493-5ce774b0d045",
+    "name": "Apache Flink REST Checkpoints Datasets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flink REST API is exposed by the JobManager Dispatcher and provides monitoring and management capabilities for a Flink cluster. It covers cluster configuration, JobManager environment and metrics, job lifecycle (submit, list, cancel, stop), checkpoint and savepoint management, JAR upload and execution, dataset operations, and TaskManager inspection.\n\nContact Support:\n Name: Apache Flink",
+      "type": "text/plain"
+    }
+  }
+}

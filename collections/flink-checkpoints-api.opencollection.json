@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Checkpoint statistics for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/checkpoints",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Checkpoint statistics for a job"
+        },
+        {
+          "info": {
+            "name": "Trigger a checkpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/jobs/:jobid/checkpoints",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Trigger a checkpoint"
+        },
+        {
+          "info": {
+            "name": "Checkpoint configuration for a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/checkpoints/config",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Checkpoint configuration for a job"
+        },
+        {
+          "info": {
+            "name": "Checkpoint details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/checkpoints/details/:checkpointid",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              },
+              {
+                "name": "checkpointid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Checkpoint details"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

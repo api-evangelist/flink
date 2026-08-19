@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "ca2dbe4b-033d-4de8-add0-229802aac525",
+      "name": "TaskManagers",
+      "description": {
+        "content": "TaskManager listing and inspection.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "184c684d-5163-434c-b466-3f6cdef4d4d2",
+          "name": "List TaskManagers",
+          "request": {
+            "name": "List TaskManagers",
+            "description": {},
+            "url": {
+              "path": [
+                "taskmanagers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3dfdca55-abda-4521-bed6-3dabacfec2e8",
+              "name": "List of TaskManagers in the cluster.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taskmanagers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d9811d0-0b85-4bef-a35d-66d8f7294547",
+          "name": "TaskManager metrics",
+          "request": {
+            "name": "TaskManager metrics",
+            "description": {},
+            "url": {
+              "path": [
+                "taskmanagers",
+                ":taskmanagerid",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskmanagerid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b5f160b-e0e5-45b0-933c-97d138a8e93b",
+              "name": "TaskManager metrics.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taskmanagers",
+                    ":taskmanagerid",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskmanagerid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b22bb34-bd58-4c03-a851-8ed6a4af05a6",
+          "name": "List TaskManager logs",
+          "request": {
+            "name": "List TaskManager logs",
+            "description": {},
+            "url": {
+              "path": [
+                "taskmanagers",
+                ":taskmanagerid",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskmanagerid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "073b9806-a298-4327-9902-970cf78ea240",
+              "name": "Available TaskManager log files.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "taskmanagers",
+                    ":taskmanagerid",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskmanagerid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8081",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e8c46c27-ca7e-4116-b426-83c85188035a",
+    "name": "Apache Flink REST Checkpoints TaskManagers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flink REST API is exposed by the JobManager Dispatcher and provides monitoring and management capabilities for a Flink cluster. It covers cluster configuration, JobManager environment and metrics, job lifecycle (submit, list, cancel, stop), checkpoint and savepoint management, JAR upload and execution, dataset operations, and TaskManager inspection.\n\nContact Support:\n Name: Apache Flink",
+      "type": "text/plain"
+    }
+  }
+}

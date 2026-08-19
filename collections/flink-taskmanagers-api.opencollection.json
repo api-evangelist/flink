@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints TaskManagers API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TaskManagers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List TaskManagers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/taskmanagers"
+          },
+          "docs": "List TaskManagers"
+        },
+        {
+          "info": {
+            "name": "TaskManager metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/taskmanagers/:taskmanagerid/metrics",
+            "params": [
+              {
+                "name": "taskmanagerid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "TaskManager metrics"
+        },
+        {
+          "info": {
+            "name": "List TaskManager logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/taskmanagers/:taskmanagerid/logs",
+            "params": [
+              {
+                "name": "taskmanagerid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List TaskManager logs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "cdddb06d-649b-4c86-bb5e-f2af11e92554",
+      "name": "JobManager",
+      "description": {
+        "content": "JobManager configuration, environment, logs, metrics, and threads.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4777c57-6001-4ee6-a23f-68c65fb83e69",
+          "name": "Cluster configuration",
+          "request": {
+            "name": "Cluster configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmanager",
+                "config"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98419bed-efb8-4831-bef9-4779e396dc82",
+              "name": "JobManager configuration entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmanager",
+                    "config"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4986580c-409e-4575-93f0-e392af65fb2d",
+          "name": "JobManager environment",
+          "request": {
+            "name": "JobManager environment",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmanager",
+                "environment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b29cef97-c22e-4652-9d08-d9d6eedf64f2",
+              "name": "JobManager JVM and environment details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmanager",
+                    "environment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55a22119-79e7-44de-9a0b-dd0883374bb2",
+          "name": "List JobManager log files",
+          "request": {
+            "name": "List JobManager log files",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmanager",
+                "logs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47b2978c-8c1a-4015-a0ff-f0ad75a5d044",
+              "name": "Available JobManager log files.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmanager",
+                    "logs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00b6d338-1795-49a0-9683-031b28da1b1a",
+          "name": "JobManager metrics",
+          "request": {
+            "name": "JobManager metrics",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmanager",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "get",
+                  "value": "<string>",
+                  "description": "Comma-separated metric names."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d09e4d36-53c3-4d63-b9a5-f09855dbc1b7",
+              "name": "Requested JobManager metric values.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmanager",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "get",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "990e0c79-2303-4216-8a70-ac21fb63dff1",
+          "name": "JobManager thread dump",
+          "request": {
+            "name": "JobManager thread dump",
+            "description": {},
+            "url": {
+              "path": [
+                "jobmanager",
+                "thread-dump"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f01c675-8f6e-40e4-8c76-b3bcceb00893",
+              "name": "Thread dump of the JobManager.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "jobmanager",
+                    "thread-dump"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8081",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dcbe1840-73e6-4845-ba4a-c6eff2a24f9e",
+    "name": "Apache Flink REST Checkpoints JobManager API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Flink REST API is exposed by the JobManager Dispatcher and provides monitoring and management capabilities for a Flink cluster. It covers cluster configuration, JobManager environment and metrics, job lifecycle (submit, list, cancel, stop), checkpoint and savepoint management, JAR upload and execution, dataset operations, and TaskManager inspection.\n\nContact Support:\n Name: Apache Flink",
+      "type": "text/plain"
+    }
+  }
+}

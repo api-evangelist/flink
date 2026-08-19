@@ -1,0 +1,104 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints JARs API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JARs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List uploaded JARs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jars"
+          },
+          "docs": "List uploaded JARs"
+        },
+        {
+          "info": {
+            "name": "Upload a JAR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/jars/upload",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "jarfile",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload a JAR"
+        },
+        {
+          "info": {
+            "name": "Delete a JAR",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/jars/:jarid",
+            "params": [
+              {
+                "name": "jarid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a JAR"
+        },
+        {
+          "info": {
+            "name": "Plan for a JAR",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jars/:jarid/plan",
+            "params": [
+              {
+                "name": "jarid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Plan for a JAR"
+        },
+        {
+          "info": {
+            "name": "Run a job from a JAR",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8081/jars/:jarid/run",
+            "params": [
+              {
+                "name": "jarid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Run a job from a JAR"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

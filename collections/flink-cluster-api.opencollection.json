@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints Cluster API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Shut down the cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/cluster"
+          },
+          "docs": "Shut down the cluster"
+        },
+        {
+          "info": {
+            "name": "Web UI configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/config"
+          },
+          "docs": "Web UI configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

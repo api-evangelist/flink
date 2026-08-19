@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints Datasets API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List cluster datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/datasets"
+          },
+          "docs": "List cluster datasets"
+        },
+        {
+          "info": {
+            "name": "Delete a cluster dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8081/datasets/:datasetid",
+            "params": [
+              {
+                "name": "datasetid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a cluster dataset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

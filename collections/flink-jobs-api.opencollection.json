@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints Jobs API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs"
+          },
+          "docs": "List jobs"
+        },
+        {
+          "info": {
+            "name": "Jobs overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/overview"
+          },
+          "docs": "Jobs overview"
+        },
+        {
+          "info": {
+            "name": "Aggregated job metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/metrics"
+          },
+          "docs": "Aggregated job metrics"
+        },
+        {
+          "info": {
+            "name": "Get job details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Get job details"
+        },
+        {
+          "info": {
+            "name": "Cancel or stop a job",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8081/jobs/:jobid",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              },
+              {
+                "name": "mode",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancel or stop a job"
+        },
+        {
+          "info": {
+            "name": "Job configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/config",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Job configuration"
+        },
+        {
+          "info": {
+            "name": "Job exception history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/exceptions",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Job exception history"
+        },
+        {
+          "info": {
+            "name": "Job accumulators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobs/:jobid/accumulators",
+            "params": [
+              {
+                "name": "jobid",
+                "value": "",
+                "type": "path",
+                "description": "A Flink job ID."
+              }
+            ]
+          },
+          "docs": "Job accumulators"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

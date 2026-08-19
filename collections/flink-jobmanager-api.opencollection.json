@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Flink REST Checkpoints JobManager API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "JobManager",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cluster configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobmanager/config"
+          },
+          "docs": "Cluster configuration"
+        },
+        {
+          "info": {
+            "name": "JobManager environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobmanager/environment"
+          },
+          "docs": "JobManager environment"
+        },
+        {
+          "info": {
+            "name": "List JobManager log files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobmanager/logs"
+          },
+          "docs": "List JobManager log files"
+        },
+        {
+          "info": {
+            "name": "JobManager metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobmanager/metrics",
+            "params": [
+              {
+                "name": "get",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated metric names."
+              }
+            ]
+          },
+          "docs": "JobManager metrics"
+        },
+        {
+          "info": {
+            "name": "JobManager thread dump",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8081/jobmanager/thread-dump"
+          },
+          "docs": "JobManager thread dump"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
