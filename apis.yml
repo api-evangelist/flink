@@ -116,6 +116,8 @@ apis:
   humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
   baseURL: http://localhost:8081
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
