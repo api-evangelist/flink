@@ -91,38 +91,6 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-- aid: flink:flink-jars-api
-  name: Apache Flink JARs API
-  description: JAR upload, listing, run, and delete.
-  humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
-  baseURL: http://localhost:8081
-  tags:
-  - JARs
-  properties:
-  - type: OpenAPI
-    url: openapi/flink-jars-api-openapi.yml
-  - type: Documentation
-    url: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
-  - type: Website
-    url: https://flink.apache.org/
-  - type: GitHubRepository
-    url: https://github.com/apache/flink
-- aid: flink:flink-jobmanager-api
-  name: Apache Flink JobManager API
-  description: JobManager configuration, environment, logs, metrics, and threads.
-  humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
-  baseURL: http://localhost:8081
-  tags:
-  - JobManager
-  properties:
-  - type: OpenAPI
-    url: openapi/flink-jobmanager-api-openapi.yml
-  - type: Documentation
-    url: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
-  - type: Website
-    url: https://flink.apache.org/
-  - type: GitHubRepository
-    url: https://github.com/apache/flink
 - aid: flink:flink-jobs-api
   name: Apache Flink Jobs API
   description: Job lifecycle and inspection.
@@ -141,16 +109,48 @@ apis:
     url: https://flink.apache.org/
   - type: GitHubRepository
     url: https://github.com/apache/flink
-- aid: flink:flink-taskmanagers-api
-  name: Apache Flink TaskManagers API
+- aid: flink:flink-jars-api
+  name: Apache Flink JA Rs API
+  description: JAR upload, listing, run, and delete.
+  humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
+  baseURL: http://localhost:8081
+  tags:
+  - JARs
+  properties:
+  - type: OpenAPI
+    url: openapi/flink-jars-api-openapi.yml
+  - type: Documentation
+    url: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
+  - type: Website
+    url: https://flink.apache.org/
+  - type: GitHubRepository
+    url: https://github.com/apache/flink
+- aid: flink:flink-job-manager-api
+  name: Apache Flink Job Manager API
+  description: JobManager configuration, environment, logs, metrics, and threads.
+  humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
+  baseURL: http://localhost:8081
+  tags:
+  - Job Manager
+  properties:
+  - type: OpenAPI
+    url: openapi/flink-job-manager-api-openapi.yml
+  - type: Documentation
+    url: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
+  - type: Website
+    url: https://flink.apache.org/
+  - type: GitHubRepository
+    url: https://github.com/apache/flink
+- aid: flink:flink-task-managers-api
+  name: Apache Flink Task Managers API
   description: TaskManager listing and inspection.
   humanURL: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
   baseURL: http://localhost:8081
   tags:
-  - TaskManagers
+  - Task Managers
   properties:
   - type: OpenAPI
-    url: openapi/flink-taskmanagers-api-openapi.yml
+    url: openapi/flink-task-managers-api-openapi.yml
   - type: Documentation
     url: https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/
   - type: Website
