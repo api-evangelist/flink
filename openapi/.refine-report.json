@@ -13,21 +13,21 @@
     "flink-taskmanagers-api-openapi.yml"
   ],
   "archived": [
-    "deleted 3 superseded output(s) from the previous generation"
+    "deleted 2 superseded output(s) from the previous generation"
   ],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "flink-rest-api-openapi-original.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "superseded outputs removed: flink-ja-rs-api-openapi.yml, flink-job-manager-api-openapi.yml, flink-task-managers-api-openapi.yml",
-    "apis.yml register: written (+3 apis, 7 total)"
+    "superseded outputs removed: flink-job-manager-api-openapi.yml, flink-task-managers-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 7 total)"
   ],
   "skipped": [
     "flink-checkpoints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "flink-cluster-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "flink-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "flink-ja-rs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "flink-jars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "flink-job-manager-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "flink-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "flink-task-managers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
