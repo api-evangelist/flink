@@ -158,6 +158,12 @@ apis:
   - type: GitHubRepository
     url: https://github.com/apache/flink
 common:
+- type: Plans
+  url: plans/flink-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/flink-rate-limits.yml
+- type: FinOps
+  url: finops/flink-finops.yml
 - type: CodeOfConduct
   url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
 - type: ContributionGuide
