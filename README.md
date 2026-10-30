@@ -1,4 +1,4 @@
-# Apache Flink (flink)
+# Apache Flink
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,59 +64,128 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Apache Flink is an open-source framework and distributed processing engine for stateful computations over unbounded and bounded data streams. It is designed to run in all common cluster environments and to perform computations at in-memory speed and at any scale. Flink supports event-time processing, exactly-once semantics, layered APIs (SQL, Table, DataStream, ProcessFunction), and is widely used for real-time analytics, event-driven applications, and continuous ETL pipelines.
+Apache Flink is an open-source framework and distributed processing engine for stateful computations over unbounded and bounded data streams. It is designed to run in all common cluster environments and to perform computations at in-memory speed and at any scale. Flink exposes a REST API on the JobManager Dispatcher that allows external systems to query cluster status, submit and manage jobs, trigger savepoints and checkpoints, upload and run JARs, and inspect metrics, accumulators, and exception histories. The same REST endpoints power the Flink Web UI.
 
-Beyond its programming APIs, Flink exposes a REST API on the JobManager Dispatcher that allows external systems to query cluster status, submit and manage jobs, trigger savepoints and checkpoints, upload and run JARs, and inspect metrics, accumulators, and exception histories. The same REST endpoints power the Flink Web UI, making the REST API the primary programmatic interface for operating a Flink cluster.
+**Areas:** Big Data · Distributed Computing · Real-Time Analytics · Stream Processing · Workflows
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/flink/refs/heads/main/apis.yml)
+## Apache Flink on APIs.io
 
-## Scope
+Everything profiled for Apache Flink is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/flink/](https://apis.io/providers/flink/)** — or go straight to one of the APIs or properties below.
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+### APIs (7)
 
-## Tags
+- [Apache Flink Checkpoints API](https://apis.io/apis/flink/flink-checkpoints-api/) — Checkpoint configuration, status, and details.
+- [Apache Flink Cluster API](https://apis.io/apis/flink/flink-cluster-api/) — Cluster lifecycle and configuration.
+- [Apache Flink Datasets API](https://apis.io/apis/flink/flink-datasets-api/) — Cluster dataset listing and deletion.
+- [Apache Flink Jobs API](https://apis.io/apis/flink/flink-jobs-api/) — Job lifecycle and inspection.
+- [Apache Flink JA Rs API](https://apis.io/apis/flink/flink-jars-api/) — JAR upload, listing, run, and delete.
+- [Apache Flink Job Manager API](https://apis.io/apis/flink/flink-job-manager-api/) — JobManager configuration, environment, logs, metrics, and threads.
+- [Apache Flink Task Managers API](https://apis.io/apis/flink/flink-task-managers-api/) — TaskManager listing and inspection.
 
-- Big Data
-- Distributed Computing
-- Real-Time Analytics
-- Stream Processing
-- Workflows
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Apache Flink REST API
+#### Agentic access (1)
 
-The Flink REST API is exposed by the JobManager Dispatcher and provides monitoring and management capabilities for a Flink cluster. The API covers cluster configuration, JobManager environment and metrics, job lifecycle (submit, list, cancel, stop), checkpoint and savepoint management, JAR upload and execution, dataset operations, and TaskManager inspection.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Endpoint categories include:
+- [Flink Agentic Access](https://apis.io/agentic-access/flink/flink-agentic-access/)
 
-- **Cluster** — `/cluster`, `/config`, `/jobmanager/config`, `/jobmanager/environment`, `/jobmanager/logs`, `/jobmanager/metrics`, `/jobmanager/thread-dump`
-- **Jobs** — `/jobs`, `/jobs/:jobid`, `/jobs/overview`, `/jobs/metrics`, `/jobs/:jobid/accumulators`, `/jobs/:jobid/exceptions`, `/jobs/:jobid/config`
-- **Checkpoints & Savepoints** — `/jobs/:jobid/checkpoints`, `/jobs/:jobid/checkpoints/config`, `/jobs/:jobid/checkpoints/details/:checkpointid`
-- **JARs** — `/jars`, `/jars/upload`, `/jars/:jarid/plan`, `/jars/:jarid/run`, `/jars/:jarid`
-- **Datasets** — `/datasets`, `/datasets/:datasetid`
-- **TaskManagers** — `/taskmanagers`, `/taskmanagers/:id/metrics`, `/taskmanagers/:id/logs`
+#### Collections (7)
 
-**Documentation:** [https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/](https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/)
+Postman and Open Collection request collections.
 
-## Common Properties
+- [Apache Flink REST Checkpoints API](https://apis.io/collections/flink/open-flink-checkpoints-api/)
+- [Apache Flink REST Checkpoints Cluster API](https://apis.io/collections/flink/open-flink-cluster-api/)
+- [Apache Flink REST Checkpoints Datasets API](https://apis.io/collections/flink/open-flink-datasets-api/)
+- [Apache Flink REST Checkpoints JARs API](https://apis.io/collections/flink/open-flink-jars-api/)
+- [Apache Flink REST Checkpoints JobManager API](https://apis.io/collections/flink/open-flink-jobmanager-api/)
+- [Apache Flink REST Checkpoints Jobs API](https://apis.io/collections/flink/open-flink-jobs-api/)
+- [Apache Flink REST Checkpoints TaskManagers API](https://apis.io/collections/flink/open-flink-taskmanagers-api/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Flink Domain Security](https://apis.io/security/flink/flink-domain-security/)
+- [Flink Vulnerability Disclosure](https://apis.io/security/flink/flink-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Flink Plans Pricing](https://apis.io/plans/flink/flink-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Flink Rate Limits](https://apis.io/rate-limits/flink/flink-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Flink Finops](https://apis.io/finops/flink/flink-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://flink.apache.org/)
 - [Documentation](https://nightlies.apache.org/flink/flink-docs-stable/)
-- [REST API Documentation](https://nightlies.apache.org/flink/flink-docs-stable/docs/ops/rest_api/)
-- [GitHub Repository](https://github.com/apache/flink)
 - [Blog](https://flink.apache.org/posts/)
-- [Community](https://flink.apache.org/community/)
 
-## Timestamps
+## API Evangelist rating
 
-- **Created:** 2025-01-01
-- **Modified:** 2026-04-28
+**Kin Score 21.6** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 36.1 |
+| Contract governance | 0.0 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 14.3 |
+| Access clarity | 7.9 |
 
-**FN:** Kin Lane
+**Agent readiness 17.1** — agent-aware
 
-**Email:** kin@apievangelist.com
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/flink/](https://apis.io/providers/flink/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Flink: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/flink/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
